@@ -1,10 +1,17 @@
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import javax.swing.*;
 import javax.sound.sampled.*;
 
 public class Sound {
+
+    /**
+     * Class requirements
+     * 1. play intro music
+     * 2. play correct guess sound
+     * 3. play incorrect guess sound
+     * 4. play win sound
+     * 5. play lose sound
+     */
 
         public static void main(String[] args){
 
