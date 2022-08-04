@@ -51,7 +51,7 @@ public class Game {
         return output.toString();
     }
 
-    public Boolean getGameOver() {
+    public Boolean isGameOverCheck() {
         return gameOver;
     }
 
@@ -84,7 +84,7 @@ public class Game {
         System.out.println("\n" +
                 "\n===============================================================" +
                 "\n|| Name: " + this.playerName + "         Difficulty:" + this.difficulty +
-                "\n|| Solve: " + displayGameBoard() +
+                "\n|| Puzzle: " + displayGameBoard() +
                 "\n===============================================================\n");
     }
 
@@ -95,10 +95,24 @@ public class Game {
     public void takeTurn() {
         Character letter = Interact.getPlayerGuess();
         GUESSED.add(letter);
+        if (secretWord.toLowerCase().contains(letter.toString())) {
+            System.out.println("Correct!");
+        } else {
+            this.guessesLeft--;
+            System.out.println("Incorrect!");
+            System.out.println(Graphics.drawHangman(this.guessesLeft()));
+        }
      }
 
 
     public String guessesLeft() {
         return (Integer.toString(this.guessesLeft));
+    }
+
+    public void initGame() {
+        this.gameOver = false;
+        this.secretWord = getRandomWord(difficulty);
+        this.guessesLeft = 6;
+        this.GUESSED.clear();
     }
 }

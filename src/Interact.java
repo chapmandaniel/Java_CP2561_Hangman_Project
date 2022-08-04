@@ -10,7 +10,7 @@ public class Interact {
      */
     static char getPlayerGuess() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter guess: ");
+        System.out.print("Guess a letter, or solve: ");
         //regex for only letters
         String guess = scanner.nextLine();
         String regex = "[a-zA-Z]";
@@ -19,6 +19,7 @@ public class Interact {
             guess = scanner.nextLine();
         }
         return guess.charAt(0);
+
     }
 
     /**
