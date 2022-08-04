@@ -26,7 +26,7 @@ public class Game {
   */
 
     private String getRandomWord(String difficulty) {
-        return "Wheel of Fortune";
+        return "Puck";
     }
 
 
@@ -65,7 +65,7 @@ public class Game {
         //check if output contains underscores
         if(!this.displayGameBoard().contains("_")) {
             this.gameOver = true;
-            System.out.println("You win!");
+            Graphics.displayWinGraphic();
         }
 
         //check if guessesLeft is 0
@@ -98,5 +98,7 @@ public class Game {
      }
 
 
-
+    public String guessesLeft() {
+        return (Integer.toString(this.guessesLeft));
+    }
 }

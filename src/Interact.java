@@ -49,5 +49,20 @@ public class Interact {
         }
     }
 
+    public static boolean askToPlayAgain(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Would you like to play again? (y/n) ");
+        String answer = scanner.nextLine();
+        while (!answer.equals("y") && !answer.equals("n")) {
+            System.out.println("Invalid answer. Please enter y or n.");
+            answer = scanner.nextLine();
+        }
+        if (answer.equals("y")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 }
