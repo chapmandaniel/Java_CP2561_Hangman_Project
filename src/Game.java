@@ -67,16 +67,19 @@ public class Game {
         //check if output contains underscores
         if(!this.displayGameBoard().contains("_")) {
             this.gameOver = true;
-            System.out.println(Graphics.getWinGraphic());        }
+            System.out.println(Graphics.getWinGraphic());
+            Sound.playWinMusic();
+            System.out.println("Congrats the word was: " + this.secretWord + "!\n");
+        }
 
         //check if guessesLeft is 0
         if (this.guessesLeft == 0) {
             this.gameOver = true;
             System.out.println(Graphics.drawHangman("0"));
             System.out.println(Graphics.getGameOverGraphic());
+            System.out.println("The word was: " + this.secretWord);
             Sound.gameOverSound();
         }
-
     }
 
     public String getPlayerName() {

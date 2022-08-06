@@ -9,17 +9,25 @@ public class WordLibrary {
     private String difficulty;
     private final List<String> SECRET_WORDS = new ArrayList<String>();
 
+    /**
+     * Constructor for WordLibrary
+     * @param difficulty - the difficulty level of the game
+     */
     public WordLibrary(String difficulty) {
         this.difficulty = difficulty;
-        this.loadWords();
+        this.loadWords(difficulty);
     }
 
-    public void loadWords(){
+    /**
+     * Load word library matching difficulty level set by the user
+     * @return void
+     */
+    public void loadWords(String level) {
         BufferedReader br = null;
         String fileName = "";
-        if(difficulty.equals("easy")) {
+        if(level.equals("easy")) {
             fileName = "easyWords.txt";
-        } else if(difficulty.equals("medium")) {
+        } else if(level.equals("medium")) {
             fileName = "mediumWords.txt";
         } else {
             fileName = "hardWords.txt";
@@ -36,6 +44,11 @@ public class WordLibrary {
         }
     }
 
+    /**
+     * Get a random word from the word library
+     * remove the word from the library so it can't be used again
+     * @return String - a random word from the word library
+     */
     public String getRandomWord() {
         Random random = new Random();
         int randomIndex = random.nextInt(SECRET_WORDS.size());
@@ -44,6 +57,11 @@ public class WordLibrary {
         return randomWord;
     }
 
+
+    /**
+     * Get the number of words in the word library
+     * @return int - the number of words in the word library
+     */
     public int wordsRemaining() {
         return SECRET_WORDS.size();
     }

@@ -5,10 +5,10 @@ public class Gameplay {
     public static void main(String[] args) {
         boolean quit = false;
         System.out.println(Graphics.getGameTitle());
+        Sound.playIntroMusic();
 
         currentGame = new Game();
         currentGame.printHeader();
-        Sound.playIntroMusic();
 
         while (!quit) {
             while (!currentGame.isGameOverCheck()) {
