@@ -4,19 +4,21 @@ import java.util.List;
 
 public class Game {
 
-    private String difficulty;
+    private final String difficulty;
     private String secretWord;
-    private String playerName;
+    private final String playerName;
     private int guessesLeft = 6;
     private final List<Character> GUESSED = new ArrayList<Character>();
     private Boolean gameOver;
 
+    private final WordLibrary wordLibrary;
+
     //constructor for game
     public Game() {
-        this.gameOver = false;
         this.playerName = Interact.getUserName();
         this.difficulty = Interact.getDifficultyLevel();
-        this.secretWord = getRandomWord(difficulty);
+        wordLibrary = new WordLibrary(difficulty);
+        this.initGame();
     }
 
 
@@ -25,8 +27,8 @@ public class Game {
  * NEEDS CUSTOMIZATION CURRENTLY PLACEHOLDER
   */
 
-    private String getRandomWord(String difficulty) {
-        return "Puck";
+    private String getRandomWord() {
+        return this.secretWord;
     }
 
 
@@ -65,13 +67,14 @@ public class Game {
         //check if output contains underscores
         if(!this.displayGameBoard().contains("_")) {
             this.gameOver = true;
-            Graphics.displayWinGraphic();
-        }
+            System.out.println(Graphics.getWinGraphic());        }
 
         //check if guessesLeft is 0
         if (this.guessesLeft == 0) {
             this.gameOver = true;
-            System.out.println("You lose!");
+            System.out.println(Graphics.drawHangman("0"));
+            System.out.println(Graphics.getGameOverGraphic());
+            Sound.gameOverSound();
         }
 
     }
@@ -81,26 +84,21 @@ public class Game {
     }
 
     public void printHeader() {
-        System.out.println("\n" +
-                "\n===============================================================" +
-                "\n|| Name: " + this.playerName + "         Difficulty:" + this.difficulty +
-                "\n|| Puzzle: " + displayGameBoard() +
-                "\n===============================================================\n");
-    }
+        System.out.println(
+                "\n------------------------------------------------------------------" +
+                "\n Name: " + this.playerName + "\t\tDifficulty: " + this.difficulty + "\t\tWords Remaining: " + wordLibrary.wordsRemaining() +
+                "\n------------------------------------------------------------------\n");
 
-    private String guessesLeftMessage() {
-        return "You have " + this.guessesLeft + " guesses left.\n";
     }
 
     public void takeTurn() {
         Character letter = Interact.getPlayerGuess();
         GUESSED.add(letter);
         if (secretWord.toLowerCase().contains(letter.toString())) {
-            System.out.println("Correct!");
+            Sound.playCorrectSound();
         } else {
             this.guessesLeft--;
-            System.out.println("Incorrect!");
-            System.out.println(Graphics.drawHangman(this.guessesLeft()));
+            Sound.playIncorrectSound();
         }
      }
 
@@ -109,10 +107,12 @@ public class Game {
         return (Integer.toString(this.guessesLeft));
     }
 
+
     public void initGame() {
         this.gameOver = false;
-        this.secretWord = getRandomWord(difficulty);
+        this.secretWord = wordLibrary.getRandomWord();
         this.guessesLeft = 6;
         this.GUESSED.clear();
     }
+
 }

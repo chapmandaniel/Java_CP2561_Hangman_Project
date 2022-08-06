@@ -1,0 +1,10 @@
+school
+college
+hamster
+television
+vehicle
+window
+computer
+table
+basket
+microwave

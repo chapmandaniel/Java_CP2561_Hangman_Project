@@ -13,6 +13,7 @@ public class Interact {
         System.out.print("Guess a letter, or solve: ");
         //regex for only letters
         String guess = scanner.nextLine();
+
         String regex = "[a-zA-Z]";
         while (!guess.matches(regex)) {
             System.out.println("Invalid guess. Please enter a letter.");
@@ -34,7 +35,7 @@ public class Interact {
 
     static String getDifficultyLevel() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter a difficulty level (type number):\n 1. Easy\n 2. Medium\n 3. Hard\n");
+        System.out.print("Please enter a difficulty level (type number):\n1)Easy  2)Medium  3)Hard\n");
         int level = scanner.nextInt();
         while (level < 1 || level > 3) {
             System.out.println("Invalid difficulty level. Please enter a number between 1 and 3.");
