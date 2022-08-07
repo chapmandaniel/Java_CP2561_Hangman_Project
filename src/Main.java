@@ -1,13 +1,11 @@
-public class Gameplay {
-
-    private static Game currentGame;
+public class Main {
 
     public static void main(String[] args) {
         boolean quit = false;
         System.out.println(Graphics.getGameTitle());
         Sound.playIntroMusic();
 
-        currentGame = new Game();
+        Game currentGame = new Game();
         currentGame.printHeader();
 
         while (!quit) {
@@ -17,7 +15,7 @@ public class Gameplay {
                 currentGame.takeTurn();
                 currentGame.validateGameOver();
             }
-            quit = Interact.askToPlayAgain();
+            quit = Interact.askToQuitGame();
             if (!quit) {
                 currentGame.initGame();
                 currentGame.printHeader();

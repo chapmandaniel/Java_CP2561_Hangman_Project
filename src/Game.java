@@ -10,10 +10,10 @@ public class Game {
     private int guessesLeft = 6;
     private final List<Character> GUESSED = new ArrayList<Character>();
     private Boolean gameOver;
-
     private final WordLibrary wordLibrary;
 
-    //constructor for game
+
+    /** Constructor for Game */
     public Game() {
         this.playerName = Interact.getUserName();
         this.difficulty = Interact.getDifficultyLevel();
@@ -22,20 +22,13 @@ public class Game {
     }
 
 
-/**
- * Method to set a random secret word
- * NEEDS CUSTOMIZATION CURRENTLY PLACEHOLDER
-  */
-
-    private String getRandomWord() {
-        return this.secretWord;
-    }
-
-
-/**
- * Displays the word formatted with underscores and revealed guesses
- * @return String - the word with underscores and revealed guesses
- */
+    /** Method to display word with hidden letters and guessed letters
+     * 1. a StringBuilder is used to create a string of the word with hidden letters and guessed letters
+     * 2. If the GUESSED variable contains the current character in the word variable, it will append that character to the output variable.
+     * 3. If the GUESSED variable does not contain the current character in the word variable, it will append a '_' to the output variable.
+     * 4. It will return the value of the output variable
+     * @return String - the word with hidden letters and guessed letters
+     */
 
     public String displayGameBoard() {
         String word = secretWord.toLowerCase();
@@ -53,16 +46,12 @@ public class Game {
         return output.toString();
     }
 
-    public Boolean isGameOverCheck() {
-        return gameOver;
-    }
 
-
-/**
- * Method to check if the user has won the game
- * if there aren't any underscores in the word, the user has won
- */
-
+    /**
+     * Method to check if the game is over by analyzing the displayGameBoard() method result
+     * 1. If the game board doesn't contain any underscores, then the game is over and the player wins.
+     * 2. If the player has no guesses left, then the game is over and the player loses.
+     */
     public void validateGameOver(){
         //check if output contains underscores
         if(!this.displayGameBoard().contains("_")) {
@@ -82,10 +71,10 @@ public class Game {
         }
     }
 
-    public String getPlayerName() {
-        return this.playerName;
-    }
 
+    /**
+     * Method to print a UI status bar
+     */
     public void printHeader() {
         System.out.println("\n\n" +
                 "\n------------------------------------------------------------------" +
@@ -93,17 +82,12 @@ public class Game {
                 "\n------------------------------------------------------------------");
 
     }
-//
-//    public void takeTurn() {
-//        Character letter = Interact.getPlayerGuess();
-//        GUESSED.add(letter);
-//        if (secretWord.toLowerCase().contains(letter.toString())) {
-//            Sound.playCorrectSound();
-//        } else {
-//            this.guessesLeft--;
-//            Sound.playIncorrectSound();
-//        }
-//     }
+
+    /** method takeTurn()
+     * 1. It gets the user input
+     * 2. If the user input is the secret word, it sets gameOver to true, plays the win music, and prints the win graphic.
+     * 3. If the user input is a single character, it adds it to the GUESSED arraylist, and if it's in the secret word, it plays the correct sound, otherwise it plays the incorrect sound.
+     */
 
      public void takeTurn(){
         String userInput = Interact.getUserInput();
@@ -125,10 +109,15 @@ public class Game {
         }
      }
 
-    public String guessesLeft() {
-        return (Integer.toString(this.guessesLeft));
-    }
 
+    /**
+     * Method to initialize the game
+     * 1. It gets a random word from the word library
+     * 2. It sets the secret word to the random word
+     * 3. It sets the gameOver to false
+     * 4. It sets the guessesLeft to 6
+     * 5. It sets the GUESSED arraylist to an empty arraylist
+     */
 
     public void initGame() {
         this.gameOver = false;
@@ -136,5 +125,17 @@ public class Game {
         this.guessesLeft = 6;
         this.GUESSED.clear();
     }
+
+
+    /** Getters and setters */
+
+    private String getRandomWord() {
+        return this.secretWord;
+    }
+    public String guessesLeft() {return (Integer.toString(this.guessesLeft));}
+    public String getPlayerName() {
+        return this.playerName;
+    }
+    public Boolean isGameOverCheck() {return gameOver;}
 
 }

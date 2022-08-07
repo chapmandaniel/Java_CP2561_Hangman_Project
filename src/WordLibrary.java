@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.System.exit;
+
 public class WordLibrary {
 
-    private String difficulty;
     private final List<String> SECRET_WORDS = new ArrayList<String>();
 
     /**
@@ -14,13 +15,12 @@ public class WordLibrary {
      * @param difficulty - the difficulty level of the game
      */
     public WordLibrary(String difficulty) {
-        this.difficulty = difficulty;
         this.loadWords(difficulty);
     }
 
+
     /**
      * Load word library matching difficulty level set by the user
-     * @return void
      */
     public void loadWords(String level) {
         BufferedReader br = null;
@@ -46,15 +46,22 @@ public class WordLibrary {
 
     /**
      * Get a random word from the word library
-     * remove the word from the library so it can't be used again
+     * remove the word from the library, so it can't be used again
      * @return String - a random word from the word library
      */
     public String getRandomWord() {
-        Random random = new Random();
-        int randomIndex = random.nextInt(SECRET_WORDS.size());
-        String randomWord = SECRET_WORDS.get(randomIndex);
-        SECRET_WORDS.remove(randomIndex);
+        String randomWord = "";
+        if (SECRET_WORDS.size() > 0) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(SECRET_WORDS.size());
+            randomWord = SECRET_WORDS.get(randomIndex);
+            SECRET_WORDS.remove(randomIndex);
+        } else {
+            System.out.println("No words left in library! Game over!");
+            exit(0);
+        }
         return randomWord;
+
     }
 
 

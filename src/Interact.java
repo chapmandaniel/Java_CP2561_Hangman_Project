@@ -2,26 +2,10 @@ import java.util.Scanner;
 
 public class Interact {
 
-
     /**
      * get Players guess
      * @return guess from player
      */
-//    static char getPlayerGuess() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Guess a letter, or solve: ");
-//        //regex for only letters
-//        String guess = scanner.nextLine();
-//
-//        String regex = "[a-zA-Z]";
-//        while (!guess.matches(regex)) {
-//            System.out.println("Invalid guess. Please enter a letter.");
-//            guess = scanner.nextLine();
-//        }
-//        return guess.charAt(0);
-//
-//    }
-
     public static String getUserInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter letter or type solution: ");
@@ -46,6 +30,10 @@ public class Interact {
         return scanner.nextLine();
     }
 
+    /**
+     * Get player's difficulty level
+     * @return difficulty level 'easy', 'medium', or 'hard'
+     */
     static String getDifficultyLevel() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter a difficulty level (type number):\n\n1.Easy  2.Medium  3.Hard\n");
@@ -67,7 +55,11 @@ public class Interact {
         }
     }
 
-    public static boolean askToPlayAgain(){
+    /**
+     * Ask player if they want to quit
+     * @return true if player wants to quit, false if player wants to resume
+     */
+    public static boolean askToQuitGame(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Would you like to play again? (y/n) ");
         String answer = scanner.nextLine();
