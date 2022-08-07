@@ -87,24 +87,43 @@ public class Game {
     }
 
     public void printHeader() {
-        System.out.println(
+        System.out.println("\n\n" +
                 "\n------------------------------------------------------------------" +
                 "\n Name: " + this.playerName + "\t\tDifficulty: " + this.difficulty + "\t\tWords Remaining: " + wordLibrary.wordsRemaining() +
-                "\n------------------------------------------------------------------\n");
+                "\n------------------------------------------------------------------");
 
     }
+//
+//    public void takeTurn() {
+//        Character letter = Interact.getPlayerGuess();
+//        GUESSED.add(letter);
+//        if (secretWord.toLowerCase().contains(letter.toString())) {
+//            Sound.playCorrectSound();
+//        } else {
+//            this.guessesLeft--;
+//            Sound.playIncorrectSound();
+//        }
+//     }
 
-    public void takeTurn() {
-        Character letter = Interact.getPlayerGuess();
-        GUESSED.add(letter);
-        if (secretWord.toLowerCase().contains(letter.toString())) {
-            Sound.playCorrectSound();
-        } else {
-            this.guessesLeft--;
-            Sound.playIncorrectSound();
+     public void takeTurn(){
+        String userInput = Interact.getUserInput();
+        if(userInput.equals(secretWord)){
+            this.gameOver = true;
+            System.out.println(Graphics.getWinGraphic());
+            Sound.playWinMusic();
+            System.out.println("Congrats the word was: " + this.secretWord + "!\n");
+        }
+        else if(userInput.length() == 1){
+            GUESSED.add(userInput.charAt(0));
+            if (secretWord.toLowerCase().contains(userInput.toLowerCase())) {
+                Sound.playCorrectSound();
+            } else {
+                this.guessesLeft--;
+                Sound.playIncorrectSound();
+            }
+
         }
      }
-
 
     public String guessesLeft() {
         return (Integer.toString(this.guessesLeft));
