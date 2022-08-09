@@ -10,18 +10,22 @@ public class WordLibrary {
 
     private final List<String> SECRET_WORDS = new ArrayList<String>();
 
-    /**
+    /**-----------------------------------------------------------------------
      * Constructor for WordLibrary
      * @param difficulty - the difficulty level of the game
      */
+
     public WordLibrary(String difficulty) {
         this.loadWords(difficulty);
     }
 
 
-    /**
+
+    /**-----------------------------------------------------------------------
+     * Method loadWords
      * Load word library matching difficulty level set by the user
      */
+
     public void loadWords(String level) {
 
         String fileName = "";
@@ -55,11 +59,15 @@ public class WordLibrary {
         }
     }
 
-    /**
+
+
+    /**-----------------------------------------------------------------------
+     * Method getRandomWord
      * Get a random word from the word library
      * remove the word from the library, so it can't be used again
      * @return String - a random word from the word library
      */
+
     public String getRandomWord() {
         String randomWord = "";
         if (SECRET_WORDS.size() > 0) {
@@ -76,10 +84,13 @@ public class WordLibrary {
     }
 
 
-    /**
+
+    /**-----------------------------------------------------------------------
+     * Method wordsRemaining
      * Get the number of words in the word library
      * @return int - the number of words in the word library
      */
+
     public int wordsRemaining() {
         return SECRET_WORDS.size();
     }

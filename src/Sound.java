@@ -1,9 +1,11 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.net.URL;
-import javax.sound.sampled.*;
 
 public class Sound {
 
-    public static void playCorrectSound(){
+    public static void playCorrectSound() {
         try {
             URL correctSound = Main.class.getClassLoader().getResource("sounds/correct.wav");
             Clip clip = AudioSystem.getClip();
@@ -15,7 +17,7 @@ public class Sound {
         }
     }
 
-    public static void playIncorrectSound(){
+    public static void playIncorrectSound() {
         try {
             URL errorSound = Main.class.getClassLoader().getResource("sounds/error.wav");
             Clip clip = AudioSystem.getClip();
@@ -27,7 +29,7 @@ public class Sound {
         }
     }
 
-    public static void gameOverSound(){
+    public static void gameOverSound() {
         try {
             URL gameOverMusic = Main.class.getClassLoader().getResource("sounds/gameover.wav");
             Clip clip = AudioSystem.getClip();
@@ -40,7 +42,7 @@ public class Sound {
     }
 
 
-    public static void playWinMusic(){
+    public static void playWinMusic() {
         try {
             URL winMusic = Main.class.getClassLoader().getResource("sounds/win.wav");
             Clip clip = AudioSystem.getClip();
@@ -52,7 +54,7 @@ public class Sound {
         }
     }
 
-    public static void playIntroMusic(){
+    public static void playIntroMusic() {
         try {
             URL sound = Main.class.getClassLoader().getResource("sounds/introsound.wav");
             Clip clip = AudioSystem.getClip();

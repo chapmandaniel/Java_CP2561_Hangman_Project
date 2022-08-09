@@ -13,7 +13,9 @@ public class Game {
     private final WordLibrary wordLibrary;
 
 
-    /** Constructor for Game */
+    /**-----------------------------------------------------------------------
+     * Constructor for Game */
+
     public Game() {
         this.playerName = Interact.getUserName();
         this.difficulty = Interact.getDifficultyLevel();
@@ -22,7 +24,9 @@ public class Game {
     }
 
 
-    /** Method to display word with hidden letters and guessed letters
+    /**-----------------------------------------------------------------------
+     * Method displayGameBoard
+     * Method to display word with hidden letters and guessed letters
      * 1. a StringBuilder is used to create a string of the word with hidden letters and guessed letters
      * 2. If the GUESSED variable contains the current character in the word variable, it will append that character to the output variable.
      * 3. If the GUESSED variable does not contain the current character in the word variable, it will append a '_' to the output variable.
@@ -47,11 +51,13 @@ public class Game {
     }
 
 
-    /**
+    /**-----------------------------------------------------------------------
+     * Method validateGameOver
      * Method to check if the game is over by analyzing the displayGameBoard() method result
      * 1. If the game board doesn't contain any underscores, then the game is over and the player wins.
      * 2. If the player has no guesses left, then the game is over and the player loses.
      */
+
     public void validateGameOver(){
         //check if output contains underscores
         if(!this.displayGameBoard().contains("_")) {
@@ -72,9 +78,11 @@ public class Game {
     }
 
 
-    /**
+    /**-----------------------------------------------------------------------
+     * Method printHeader
      * Method to print a UI status bar
      */
+
     public void printHeader() {
         System.out.println("\n\n" +
                 "\n------------------------------------------------------------------" +
@@ -83,7 +91,8 @@ public class Game {
 
     }
 
-    /** method takeTurn()
+    /**-----------------------------------------------------------------------
+     * Method takeTurn
      * 1. It gets the user input
      * 2. If the user input is the secret word, it sets gameOver to true, plays the win music, and prints the win graphic.
      * 3. If the user input is a single character, it adds it to the GUESSED arraylist, and if it's in the secret word, it plays the correct sound, otherwise it plays the incorrect sound.
@@ -110,7 +119,8 @@ public class Game {
      }
 
 
-    /**
+    /**-----------------------------------------------------------------------
+     * Method initGame
      * Method to initialize the game
      * 1. It gets a random word from the word library
      * 2. It sets the secret word to the random word
@@ -127,7 +137,8 @@ public class Game {
     }
 
 
-    /** Getters and setters */
+    /**-----------------------------------------------------------------------
+     * Getters and setters */
 
     private String getRandomWord() {
         return this.secretWord;

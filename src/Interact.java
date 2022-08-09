@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class Interact {
 
-    /**
+    /**-----------------------------------------------------------------------
+     * Method getUserInput
      * get Players guess
      * @return guess from player
      */
+
     public static String getUserInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter letter or type solution: ");
@@ -20,20 +22,27 @@ public class Interact {
     }
 
 
-    /**
-     * Get player's name
+
+    /**-----------------------------------------------------------------------
+     * Method getUserName
+     * Gets a player's name
      * @return username
      */
+
     static String getUserName() {
         System.out.print("Welcome to Hangman! What's your name? ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    /**
+
+
+    /**-----------------------------------------------------------------------
+     * Method getDifficultyLevel
      * Get player's difficulty level
      * @return difficulty level 'easy', 'medium', or 'hard'
      */
+
     static String getDifficultyLevel() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter a difficulty level (type number):\n\n1.Easy  2.Medium  3.Hard\n");
@@ -55,11 +64,13 @@ public class Interact {
         }
     }
 
-    /**
+    /**-----------------------------------------------------------------------
+     * Method askToQuitGame
      * Ask player if they want to quit
      * @return true if player wants to quit, false if player wants to resume
      */
-    public static boolean askToQuitGame(){
+
+    public static boolean askToQuitGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Would you like to play again? (y/n) ");
         String answer = scanner.nextLine();
@@ -67,11 +78,7 @@ public class Interact {
             System.out.println("Invalid answer. Please enter y or n.");
             answer = scanner.nextLine();
         }
-        if (answer.equals("y")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !answer.equals("y");
     }
 
 
