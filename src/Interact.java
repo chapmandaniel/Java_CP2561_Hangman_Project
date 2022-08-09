@@ -16,7 +16,7 @@ public class Interact {
             System.out.println("Invalid guess. Alphabet Characters only...");
             input = scanner.nextLine();
         }
-        return input;
+        return input.toUpperCase();
     }
 
 

@@ -1,8 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 import static java.lang.System.exit;
 
@@ -23,21 +23,32 @@ public class WordLibrary {
      * Load word library matching difficulty level set by the user
      */
     public void loadWords(String level) {
-        BufferedReader br = null;
+
         String fileName = "";
-        if(level.equals("easy")) {
-            fileName = "easyWords.txt";
-        } else if(level.equals("medium")) {
-            fileName = "mediumWords.txt";
-        } else {
-            fileName = "hardWords.txt";
+
+        switch (level) {
+            case "easy":
+                fileName = "words/easyWords.txt";
+                break;
+            case "medium":
+                fileName = "words/mediumWords.txt";
+                break;
+            case "hard":
+                fileName = "words/hardWords.txt";
+                break;
+            default:
+                System.out.println("Invalid difficulty level");
+                exit(0);
         }
 
         try{
-            br = new BufferedReader(new FileReader("words/" + fileName));
-            String line;
-            while((line = br.readLine()) != null){
-                SECRET_WORDS.add(line);
+            URL textFile = Main.class.getClassLoader().getResource(fileName);
+            assert textFile != null;
+            Scanner scanner = new Scanner(textFile.openStream());
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                SECRET_WORDS.add(line.toUpperCase());
             }
         }catch (Exception ex) {
             ex.printStackTrace();

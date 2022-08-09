@@ -1,17 +1,11 @@
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import javax.sound.sampled.*;
 
 public class Sound {
 
-        public static void main(String[] args){
-
-        }
-
     public static void playCorrectSound(){
         try {
-            File correctSound = new File("sounds/correct.wav");
+            URL correctSound = Main.class.getClassLoader().getResource("sounds/correct.wav");
             Clip clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(correctSound);
             clip.open(ais);
@@ -23,7 +17,7 @@ public class Sound {
 
     public static void playIncorrectSound(){
         try {
-            File errorSound = new File("sounds/error.wav");
+            URL errorSound = Main.class.getClassLoader().getResource("sounds/error.wav");
             Clip clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(errorSound);
             clip.open(ais);
@@ -35,7 +29,7 @@ public class Sound {
 
     public static void gameOverSound(){
         try {
-            File gameOverMusic = new File("sounds/gameover.wav");
+            URL gameOverMusic = Main.class.getClassLoader().getResource("sounds/gameover.wav");
             Clip clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(gameOverMusic);
             clip.open(ais);
@@ -48,7 +42,7 @@ public class Sound {
 
     public static void playWinMusic(){
         try {
-            File winMusic = new File("sounds/win.wav");
+            URL winMusic = Main.class.getClassLoader().getResource("sounds/win.wav");
             Clip clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(winMusic);
             clip.open(ais);
@@ -60,9 +54,9 @@ public class Sound {
 
     public static void playIntroMusic(){
         try {
-            File introMusic = new File("sounds/introsound.wav");
+            URL sound = Main.class.getClassLoader().getResource("sounds/introsound.wav");
             Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(introMusic);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(sound);
             clip.open(ais);
             clip.start();
         } catch (Exception e) {

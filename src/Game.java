@@ -31,7 +31,7 @@ public class Game {
      */
 
     public String displayGameBoard() {
-        String word = secretWord.toLowerCase();
+        String word = secretWord.toUpperCase();
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             if (GUESSED.contains(word.charAt(i))) {
