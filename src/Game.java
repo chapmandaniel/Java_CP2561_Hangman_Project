@@ -28,8 +28,8 @@ public class Game {
      * Method displayGameBoard
      * Method to display word with hidden letters and guessed letters
      * 1. a StringBuilder is used to create a string of the word with hidden letters and guessed letters
-     * 2. If the GUESSED variable contains the current character in the word variable, it will append that character to the output variable.
-     * 3. If the GUESSED variable does not contain the current character in the word variable, it will append a '_' to the output variable.
+     * 2. If the GUESSED list contains the current character in the word variable, it will append that character to the output variable.
+     * 3. If the GUESSED list does not contain the current character in the word variable, it will append a '_' to the output variable.
      * 4. It will return the value of the output variable
      * @return String - the word with hidden letters and guessed letters
      */
@@ -100,22 +100,47 @@ public class Game {
 
      public void takeTurn(){
         String userInput = Interact.getUserInput();
-        if(userInput.equals(secretWord)){
+
+         if(userInput.equals(secretWord)){
             this.gameOver = true;
             System.out.println(Graphics.getWinGraphic());
             Sound.playWinMusic();
             System.out.println("Congrats the word was: " + this.secretWord + "!\n");
         }
-        else if(userInput.length() == 1){
-            GUESSED.add(userInput.charAt(0));
-            if (secretWord.toLowerCase().contains(userInput.toLowerCase())) {
-                Sound.playCorrectSound();
-            } else {
-                this.guessesLeft--;
-                Sound.playIncorrectSound();
-            }
 
+        if(!userInput.equals(secretWord) && userInput.length() > 1){
+            Sound.playIncorrectSound();
+            this.gameOver = true;
+            System.out.println(Graphics.getGameOverGraphic());
+            System.out.println("Sorry Game Over. The word was: " + this.secretWord + "\n");
         }
+
+        if(userInput.length() == 1){
+
+            System.out.println("checkpoint 1");
+
+            if(GUESSED.contains(userInput.charAt(0))){
+                System.out.println("checkpoint already there");
+
+                Sound.playIncorrectSound();
+                System.out.println("\nYou already guessed that letter.\n");
+            }
+            else if(secretWord.contains(userInput)){
+                System.out.println("checkpoint correct guess");
+                Sound.playCorrectSound();
+            }
+            else{
+                System.out.println("checkpoint incorrect guess");
+
+                Sound.playIncorrectSound();
+                this.guessesLeft--;
+            }
+        }
+
+        this.GUESSED.add(userInput.charAt(0));
+
+
+
      }
 
 
