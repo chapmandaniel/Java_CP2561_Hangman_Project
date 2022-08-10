@@ -117,21 +117,14 @@ public class Game {
 
         if(userInput.length() == 1){
 
-            System.out.println("checkpoint 1");
-
             if(GUESSED.contains(userInput.charAt(0))){
-                System.out.println("checkpoint already there");
-
                 Sound.playIncorrectSound();
                 System.out.println("\nYou already guessed that letter.\n");
             }
             else if(secretWord.contains(userInput)){
-                System.out.println("checkpoint correct guess");
                 Sound.playCorrectSound();
             }
             else{
-                System.out.println("checkpoint incorrect guess");
-
                 Sound.playIncorrectSound();
                 this.guessesLeft--;
             }
