@@ -1,7 +1,7 @@
 # Java_CP2561_Hangman_Project
 Create a command line version of Hangman
 
-##Introduction
+## Introduction
 Software Development Project for Java II
 Build a commandline version of classic Hangman
 
