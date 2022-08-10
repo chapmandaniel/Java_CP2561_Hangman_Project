@@ -48,7 +48,7 @@ public class Graphics {
                 }
         }
 
-        public static String guessesLeftNone = "\n\n" +
+        public static String guessesLeftNone = "\n\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -68,7 +68,7 @@ public class Graphics {
                 "| |          || ||\n" +
                 "| |         / | | \\\n";
 
-        public static String guessesLeftOne = "\n\n" +
+        public static String guessesLeftOne = "\n\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -88,7 +88,7 @@ public class Graphics {
                 "| |          || \n" +
                 "| |\n";
 
-        public static String guessesLeftTwo = "\n\n" +
+        public static String guessesLeftTwo = "\n\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -109,7 +109,7 @@ public class Graphics {
                 "| |\n";
 
 
-        public static String guessesLeftThree = "\n\n" +
+        public static String guessesLeftThree = "\n\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -130,7 +130,7 @@ public class Graphics {
                 "| |\n";
 
 
-        public static String guessesLeftFour = "\n\n" +
+        public static String guessesLeftFour = "\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -151,7 +151,7 @@ public class Graphics {
                 "| |\n";
 
 
-        public static String guessesLeftFive = "\n\n" +
+        public static String guessesLeftFive = "\n\n\n" +
                 " ___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
@@ -172,7 +172,7 @@ public class Graphics {
                 "| |\n";
 
         public static String guessesLeftSix =
-                " ___________.._______\n" +
+                " \n___________.._______\n" +
                 "| .__________))______|\n" +
                 "| | / /      ||\n" +
                 "| |/ /       ||\n" +

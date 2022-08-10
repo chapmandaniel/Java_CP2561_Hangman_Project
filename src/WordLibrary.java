@@ -76,8 +76,9 @@ public class WordLibrary {
             randomWord = SECRET_WORDS.get(randomIndex);
             SECRET_WORDS.remove(randomIndex);
         } else {
-            System.out.println("No words left in library! Game over!");
-            exit(0);
+            System.out.println("No words left in library! Reloading used words...");
+            loadWords("easy");
+            getRandomWord();
         }
         return randomWord;
 
