@@ -45,7 +45,7 @@ public class Interact {
 
     static String getDifficultyLevel() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter a difficulty level (type number):\n\n1.Easy  2.Medium  3.Hard\n");
+        System.out.print("\nPlease enter a difficulty level (type number):\n1.Easy  2.Medium  3.Hard\n");
         String level = scanner.nextLine();
         String regex = "^[1-3]$";
 
@@ -70,15 +70,15 @@ public class Interact {
      * @return true if player wants to quit, false if player wants to resume
      */
 
-    public static boolean askToQuitGame() {
+    public static String playAgainCheck() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Would you like to play again? (y/n) ");
+        System.out.print("Would you like to play again? (y/n) Enter x to change difficulty level: ");
         String answer = scanner.nextLine();
-        while (!answer.equals("y") && !answer.equals("n")) {
-            System.out.println("Invalid answer. Please enter y or n.");
+        while (!answer.equals("y") && !answer.equals("n") && !answer.equals("x")) {
+            System.out.println("Invalid answer. Please enter y or n or x...");
             answer = scanner.nextLine();
         }
-        return !answer.equals("y");
+        return answer;
     }
 
 

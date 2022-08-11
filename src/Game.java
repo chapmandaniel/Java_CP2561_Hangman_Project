@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Game {
 
-    private final String difficulty;
+    private String difficulty;
     private String secretWord;
     private final String playerName;
     private int guessesLeft = 6;
     private final List<Character> GUESSED = new ArrayList<Character>();
     private Boolean gameOver;
-    private final WordLibrary wordLibrary;
+    private WordLibrary wordLibrary;
 
 
     /**-----------------------------------------------------------------------
@@ -19,7 +19,7 @@ public class Game {
     public Game() {
         this.playerName = Interact.getUserName();
         this.difficulty = Interact.getDifficultyLevel();
-        wordLibrary = new WordLibrary(difficulty);
+        this.wordLibrary = new WordLibrary(difficulty);
         this.initGame();
     }
 
@@ -136,6 +136,11 @@ public class Game {
 
      }
 
+
+     public void changeDifficulty() {
+         this.difficulty = Interact.getDifficultyLevel();
+         this.wordLibrary = new WordLibrary(difficulty);
+     }
 
     /**-----------------------------------------------------------------------
      * Method initGame
