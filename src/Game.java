@@ -129,18 +129,20 @@ public class Game {
                 this.guessesLeft--;
             }
         }
-
         this.GUESSED.add(userInput.charAt(0));
-
-
-
      }
 
 
+     /**-----------------------------------------------------------------------
+      * Method changeDifficulty
+      * Method to request a new difficulty level from user
+      * and set the objects library content accordingly
+      */
      public void changeDifficulty() {
          this.difficulty = Interact.getDifficultyLevel();
          this.wordLibrary = new WordLibrary(difficulty);
      }
+
 
     /**-----------------------------------------------------------------------
      * Method initGame
