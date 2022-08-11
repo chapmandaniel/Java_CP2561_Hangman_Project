@@ -9,6 +9,8 @@ public class Main {
         currentGame.printHeader();
 
         while (play.equals("y")) {
+            Sound.playBackgroundMusic();
+
             while (!currentGame.isGameOverCheck()) {
                 System.out.println(Graphics.drawHangman(currentGame.guessesLeft()));
                 System.out.println("\nSolve: " + currentGame.displayGameBoard() + "\n");
@@ -24,6 +26,7 @@ public class Main {
             }
 
             if (play.equals("y")) {
+                Sound.stopBackgroundMusic();
                 currentGame.initGame();
                 currentGame.printHeader();
             }

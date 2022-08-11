@@ -5,64 +5,64 @@ import java.net.URL;
 
 public class Sound {
 
-    public static void playCorrectSound() {
+    private static Clip backgroundMusic;
+    private static Clip soundClip;
+    private static final URL correctSound = Main.class.getClassLoader().getResource("sounds/correct.wav");
+    private static final URL errorSound = Main.class.getClassLoader().getResource("sounds/error.wav");
+    private static final URL gameOverMusic = Main.class.getClassLoader().getResource("sounds/gameover.wav");
+    private static final URL winMusic = Main.class.getClassLoader().getResource("sounds/win.wav");
+    private static final URL introSound = Main.class.getClassLoader().getResource("sounds/introsound.wav");
+    private static final URL background = Main.class.getClassLoader().getResource("sounds/background.wav");
+
+
+
+    private static void playSoundEffect(URL soundEffect) {
         try {
-            URL correctSound = Main.class.getClassLoader().getResource("sounds/correct.wav");
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(correctSound);
-            clip.open(ais);
-            clip.start();
+            soundClip = AudioSystem.getClip();
+            assert soundEffect != null;
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundEffect);
+            soundClip.open(ais);
+            soundClip.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void playBackgroundMusic() {
+        try {
+            assert background != null;
+            AudioInputStream ais = AudioSystem.getAudioInputStream(background);
+            backgroundMusic = AudioSystem.getClip();
+            backgroundMusic.open(ais);
+            backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void stopBackgroundMusic() {
+        backgroundMusic.stop();
+    }
+
+    public static void playCorrectSound() {
+        playSoundEffect(correctSound);
     }
 
     public static void playIncorrectSound() {
-        try {
-            URL errorSound = Main.class.getClassLoader().getResource("sounds/error.wav");
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(errorSound);
-            clip.open(ais);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        playSoundEffect(errorSound);
     }
 
     public static void gameOverSound() {
-        try {
-            URL gameOverMusic = Main.class.getClassLoader().getResource("sounds/gameover.wav");
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(gameOverMusic);
-            clip.open(ais);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        playSoundEffect(gameOverMusic);
     }
 
 
     public static void playWinMusic() {
-        try {
-            URL winMusic = Main.class.getClassLoader().getResource("sounds/win.wav");
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(winMusic);
-            clip.open(ais);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        playSoundEffect(winMusic);
     }
 
     public static void playIntroMusic() {
-        try {
-            URL sound = Main.class.getClassLoader().getResource("sounds/introsound.wav");
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(sound);
-            clip.open(ais);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        playSoundEffect(introSound);
     }
+
 }
