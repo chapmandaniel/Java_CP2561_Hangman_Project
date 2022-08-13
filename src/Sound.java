@@ -23,6 +23,7 @@ public class Sound {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundEffect);
             soundClip.open(ais);
             soundClip.start();
+            ais.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
